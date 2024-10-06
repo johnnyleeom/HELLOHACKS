@@ -55,8 +55,12 @@ form {
 }
 
 strong {
+    margin-top: 100px;
     font-size: large;
+    color: white;
 }
 
+#boxes {
+    width: 500px;
+}
 
-   

@@ -9,9 +9,6 @@ export function App() {
           <ImageWithText />
           <div id = 'button'>
             <Button></Button>
-          <div>
-            <EmptyBoxes></EmptyBoxes>
-          </div>
           </div>
         </div>
     );

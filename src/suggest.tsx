@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import './App.css'
+import React, { useState } from 'react';
+import './App.css';
+import EmptyBoxes from './boxes';
 
 function Button() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [submittedQuery, setSubmittedQuery] = useState('');
+  const [inputValues, setInputValues] = useState<string[]>(['', '', '', '']); // Array to store input for each box
 
-  // Step 1: Retrieve the stored value from localStorage on component mount
-  useEffect(() => {
-    const storedQuery = localStorage.getItem('submittedQuery');
-    console.log('Retrieved stored query from localStorage:', storedQuery);
-    if (storedQuery) {
-      setSubmittedQuery(storedQuery); // Set state with the stored query
-    }
-  }, []);
-
+  // Handle input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
+  // Handle form submission and update the boxes
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmittedQuery(searchQuery); // Update state with submitted query
-    localStorage.setItem('submittedQuery', searchQuery); // Store the query in localStorage
-    console.log('Saved query to localStorage:', searchQuery); // Log for debugging
+    
+    // Find the first empty box and update it
+    const firstEmptyIndex = inputValues.findIndex(value => value === '');
+    if (firstEmptyIndex !== -1) {
+      const updatedValues = [...inputValues];
+      updatedValues[firstEmptyIndex] = searchQuery; // Update the first empty box with the submitted input
+      setInputValues(updatedValues);
+    } else {
+      alert('All boxes are filled!'); // 
+    }
+    setSearchQuery(''); // Clear input field after submission
   };
 
   const containerStyle = {
@@ -32,6 +34,7 @@ function Button() {
     marginBottom: '20px',
     borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    width: '480px',
   };
 
   const buttonStyle = {
@@ -51,22 +54,22 @@ function Button() {
   };
 
   return (
-    <div id = 'searchbar'>
+    <div id="searchbar">
       <form onSubmit={handleSubmit} className="search-form" style={containerStyle}>
         <input
           type="search"
           name="query"
           placeholder="Input Song"
           className="search-input"
-          value={searchQuery} // Controlled input
-          onChange={handleInputChange} // Update state on input change
+          value={searchQuery}
+          onChange={handleInputChange}
           style={{
             padding: '10px',
             fontSize: '16px',
             borderRadius: '5px',
             border: 'none',
             marginRight: '10px',
-            width: '300px',
+            width: '380px',
             color: 'black',
           }}
         />
@@ -86,12 +89,8 @@ function Button() {
           Input
         </button>
       </form>
-
-      {submittedQuery && (
-        <p>
-          <strong>{submittedQuery}</strong>
-        </p>
-      )}
+      {/* Pass the inputValues array to EmptyBoxes */}
+      <EmptyBoxes inputValue={inputValues} />
     </div>
   );
 }
