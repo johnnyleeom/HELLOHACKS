@@ -4,7 +4,7 @@ import EmptyBoxes from './boxes';
 
 function Button() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [inputValues, setInputValues] = useState<string[]>(['', '', '', '']); // Array to store input for each box
+  const [inputValues, setInputValues] = useState<string[]>(['', '', '', '']); 
 
   // Handle input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ function Button() {
     } else {
       alert('All boxes are filled!'); // 
     }
-    setSearchQuery(''); // Clear input field after submission
+    setSearchQuery(''); 
   };
 
   const containerStyle = {
@@ -89,7 +89,6 @@ function Button() {
           Input
         </button>
       </form>
-      {/* Pass the inputValues array to EmptyBoxes */}
       <EmptyBoxes inputValue={inputValues} />
     </div>
   );

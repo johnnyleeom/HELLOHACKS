@@ -20,14 +20,14 @@ const EmptyBoxes: React.FC<BoxesProps> = ({ inputValue }) => {
     opacity: 1 - index * 0.2,
     fontFamily: 'monospace',
     fontSize: 'large',
-    color: 'white', // Make text color white
+    color: 'white',
   });
 
   return (
     <div id="boxes">
       {inputValue.map((value, index) => (
         <div key={index} style={boxStyle(index)}>
-          {value ? value : ''} {/* If no value, show "Empty" */}
+          {value ? value : ''} {/* If no value, show "" */}
         </div>
       ))}
     </div>

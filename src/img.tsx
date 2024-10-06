@@ -1,6 +1,6 @@
 import React from 'react';
 import album1 from './assets/pictures/album1.jpg';
-import './App.css'; // Importing the CSS
+import './App.css'; 
 
 function ImageWithText() {
   return (
