@@ -1,0 +1,62 @@
+ 
+
+body {
+    background-color: rgb(227, 227, 227);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 70%;
+}
+
+.image-container {
+    text-align: center;
+}
+  
+.image-container img {
+    width: 300px;
+    height: 300px;
+}
+
+p {
+    font-family: monospace;
+    font-size: 15;
+    
+}
+
+#songName {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+img {
+    border-radius: 10%;
+}
+
+#nxtUp {
+    padding-top: 30%;
+}
+
+button {
+    background-color: #AFC9FF;
+    font-family: monospace;
+}
+
+input {
+    border-style: none;
+    background-color: #AFC9FF;
+  }
+
+form {
+    padding: none;
+}
+
+strong {
+    font-size: large;
+}
+
+
+   
